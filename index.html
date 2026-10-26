@@ -12,17 +12,17 @@
 :root {
   --bg: #dee9ea;
   --ink: #172526;
-  --muted: #4b5d5c;
+  --muted: #657675;
   --accent: #315e58;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 400;
+  font-weight: 300;
 }
 a { color: inherit; text-decoration: none; }
 img { display: block; width: 100%; object-fit: cover; }
@@ -85,7 +85,6 @@ p { line-height: 1.8; color: var(--muted); font-size: 14px; }
   transition: .2s;
 }
 .btn:hover { background: var(--accent); }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .btn.light {
   background: transparent;
   color: var(--ink);
@@ -118,6 +117,7 @@ section { padding: 75px 0; }
   margin-top: 32px;
 }
 .gallery img { height: 310px; }
+.gallery img:first-child { height: 360px; }
 
 .visit {
   border-top: 1px solid #17252630;
@@ -147,11 +147,6 @@ footer {
 }
 .footer-row { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
 
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .btn { transition: none; }
-}
-
 @media(max-width:700px) {
   .nav-links { gap: 12px; font-size: 11px; }
   .brand { font-size: 12px; letter-spacing: 1px; }
@@ -162,7 +157,7 @@ footer {
   .services { grid-template-columns: 1fr; gap: 30px; }
   .service img { height: 300px; }
   .gallery { grid-template-columns: 1fr 1fr; }
-  .gallery img { height: 220px; }
+  .gallery img, .gallery img:first-child { height: 220px; }
   .visit-grid { grid-template-columns: 1fr; gap: 25px; }
   .map-frame { height: 300px; }
 }
@@ -174,7 +169,7 @@ footer {
 
 <body>
 <header>
-  <nav class="container" aria-label="Main navigation">
+  <nav class="container">
     <a class="brand" href="#home">FADE MEN'S SALON</a>
     <div class="nav-links">
       <a href="#services">Services</a>
@@ -202,7 +197,10 @@ footer {
     </div>
   </div>
 
-  <img class="hero-image" src="salon-1.jpg" width="843" height="1124" fetchpriority="high" alt="Fade Men's Salon mirror with lighting">
+  <!-- Replace this inspiration photo with the salon's real photo -->
+  <img class="hero-image"
+       src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1000&q=85"
+       alt="Barbershop interior inspiration">
 </section>
 
 <section class="container" id="services">
@@ -215,19 +213,22 @@ footer {
 
   <div class="services">
     <article class="service">
-      <img src="salon-2.jpg" alt="Barber working at Fade Men's Salon">
+      <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=800&q=85"
+           alt="Barber haircut inspiration">
       <h3>Classic Haircuts</h3>
       <p>Clean, timeless styles for everyday confidence.</p>
     </article>
 
     <article class="service">
-      <img src="salon-3.jpg" alt="Inside Fade Men's Salon">
+      <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=800&q=85"
+           alt="Men's haircut inspiration">
       <h3>Modern Fades</h3>
       <p>Contemporary cuts with a fresh, sharp finish.</p>
     </article>
 
     <article class="service">
-      <img src="salon-5.jpg" alt="Fade Men's Salon chairs and mirrors">
+      <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=800&q=85"
+           alt="Barber grooming inspiration">
       <h3>Beard & Grooming</h3>
       <p>Thoughtful finishing touches for your look.</p>
     </article>
@@ -237,14 +238,15 @@ footer {
 <section class="container" id="gallery">
   <span class="eyebrow">Visual Inspiration</span>
   <h2 class="section-title">The art of the cut.</h2>
+  <p>These are reference images, not verified photos of this salon.</p>
 
   <div class="gallery">
-    <img src="salon-1.jpg" alt="Fade Men's Salon mirror with lighting" loading="lazy">
-    <img src="salon-2.jpg" alt="Barber working at Fade Men's Salon" loading="lazy">
-    <img src="salon-3.jpg" alt="Inside Fade Men's Salon" loading="lazy">
-    <img src="salon-4.jpg" alt="Fade Men's Salon interior with LED lighting" loading="lazy">
-    <img src="salon-5.jpg" alt="Fade Men's Salon chairs and mirrors" loading="lazy">
-    <img src="fade-poster.jpg" alt="Fade Men's Salon poster" loading="lazy" style="object-fit:contain;background:#102021">
+    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=85"
+         alt="Barbershop reference interior">
+    <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=800&q=85"
+         alt="Haircut reference">
+    <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=800&q=85"
+         alt="Men's hairstyle reference">
   </div>
 </section>
 
@@ -269,7 +271,6 @@ footer {
     <iframe class="map-frame"
       title="Fade Men's Salon location map"
       loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
       src="https://maps.google.com/maps?q=M%20R%20Arcade%2C%20Vamadapadav%2C%20Chennaithodi%2C%20Karnataka%20574324&output=embed">
     </iframe>
   </div>
